@@ -1,5 +1,5 @@
 # Используем легкий образ с Java
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-ea-17-jdk-slim
 
 # Указываем рабочую директорию внутри контейнера
 WORKDIR /app
