@@ -87,5 +87,4 @@ jobs:
           tags: |
             ${{ env.DOCKER_IMAGE_NAME }}:latest
             ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
-            # Если это пуш тега (релиз), добавляем тег с версией
             ${{ env.DOCKER_IMAGE_NAME }}:${{ github.ref_name }}
