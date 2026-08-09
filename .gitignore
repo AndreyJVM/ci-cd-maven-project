@@ -53,4 +53,5 @@ Thumbs.db
 # === Деплой ===
 deploy.log
 *.pid
+.env
 

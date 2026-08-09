@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сокращатель ссылок</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>...</nav>
+
+<div class="container" style="padding: 4rem 0;">
+    <h1>🔗 Сервис сокращения ссылок</h1>
+    <p style="margin-bottom: 2rem;">Вставьте длинную ссылку и получите короткую</p>
+
+    <div id="link-form">
+        <input type="url" id="url-input" placeholder="https://example.com/very/long/url" style="width: 70%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+        <button onclick="createShortLink()" style="padding: 0.8rem 2rem; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer;">Сократить</button>
+    </div>
+
+    <div id="result" style="margin-top: 2rem; display: none;">
+        <p><strong>Короткая ссылка:</strong></p>
+        <a id="short-url" href="#" target="_blank" style="color: #2563eb; font-size: 1.2rem;"></a>
+        <button onclick="copyToClipboard()" style="margin-left: 1rem; padding: 0.5rem 1rem; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer;">Копировать</button>
+    </div>
+
+    <div id="error" style="margin-top: 2rem; color: red; display: none;"></div>
+</div>
+
+<footer>...</footer>
+
+<script>
+    async function createShortLink() {
+        const input = document.getElementById('url-input');
+        const url = input.value.trim();
+
+        if (!url) {
+            showError('Пожалуйста, введите ссылку');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/links', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка сервера');
+            }
+
+            const data = await response.json();
+            document.getElementById('short-url').href = data.shortUrl;
+            document.getElementById('short-url').textContent = data.shortUrl;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+        } catch (error) {
+            showError('Не удалось создать короткую ссылку. Проверьте URL.');
+        }
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        document.getElementById('result').style.display = 'none';
+    }
+
+    function copyToClipboard() {
+        const link = document.getElementById('short-url').textContent;
+        navigator.clipboard.writeText(link).then(() => {
+            alert('Ссылка скопирована!');
+        }).catch(() => {
+            // fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = link;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Ссылка скопирована!');
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,34 +1,64 @@
 version: '3.8'
 
 services:
+  # ========== ПОСТГРЕС ==========
+  postgres:
+    image: postgres:17-alpine
+    container_name: my-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   # ========== JAVA-ПРИЛОЖЕНИЕ ==========
   app:
     image: andreyvorobevaqa/ci-cd-maven-project:latest
     container_name: my-java-app
     restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      APP_BASE_URL: ${APP_BASE_URL}
+      JAVA_OPTS: -Xmx256m -Xms128m
     networks:
       - app-network
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
-      - JAVA_OPTS=-Xmx256m -Xms128m
 
-  # ========== NGINX (РЕВЕРС-ПРОКСИ + SSL) ==========
+  # ========== NGINX ==========
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
-      - "80:80"      # HTTP (для редиректа на HTTPS)
-      - "443:443"    # HTTPS
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro   # Конфиг Nginx
-      - ./ssl:/etc/nginx/ssl:ro                                 # Папка с сертификатами
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
     depends_on:
       - app
     networks:
       - app-network
 
+# ========== ТОМА ==========
+volumes:
+  postgres_data:
 
+# ========== СЕТЬ ==========
 networks:
   app-network:
     driver: bridge
