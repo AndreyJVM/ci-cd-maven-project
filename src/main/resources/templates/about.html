@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обо мне</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<head th:replace="~{fragments/head :: head('Обо мне')}"></head>
 <body>
-<nav>
-    <div class="container">
-        <div class="nav-brand">
-            <a href="/" style="text-decoration: none; color: inherit;">Andrey Vorobev</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about">Обо мне</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/links">Сокращатель ссылок</a></li>
-        </ul>
-    </div>
-</nav>
 
-<div class="container">
-    <h1>Обо мне</h1>
-    <div class="about-content">
-        <div class="about-text">
-            <p>Привет! Меня зовут Андрей, я Java-разработчик с опытом...</p>
-            <p>Мои ключевые проекты:</p>
-            <ul>
-                <li>CI/CD пайплайн для Java-приложений</li>
-                <li>Развертывание высоконагруженных систем</li>
-                <li>Сервис сокращения ссылок</li>
-            </ul>
-            <p>Сейчас изучаю Kubernetes и облачные технологии.</p>
+<div th:replace="~{fragments/navbar :: navbar('about')}"></div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="fw-bold mb-4">👋 Обо мне</h1>
+
+            <div class="card-custom card p-4 mb-4">
+                <p class="lead">
+                    Привет! Меня зовут <strong>Андрей Воробьев</strong>,
+                    я Java-разработчик и DevOps-инженер.
+                </p>
+                <p>
+                    Я увлекаюсь созданием надёжных и масштабируемых систем,
+                    автоматизацией процессов и изучением новых технологий.
+                </p>
+                <p>
+                    Мой путь в IT начался с Java, а сейчас я активно развиваюсь
+                    в области DevOps: Docker, Kubernetes, CI/CD, облачные технологии.
+                </p>
+                <hr>
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="fw-bold fs-3" style="color: #667eea;">Java</div>
+                        <small class="text-muted">Основной стек</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold fs-3" style="color: #2496ed;">Docker</div>
+                        <small class="text-muted">Контейнеризация</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold fs-3" style="color: #28a745;">CI/CD</div>
+                        <small class="text-muted">Автоматизация</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<footer>...</footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div th:replace="~{fragments/navbar :: theme-script}"></div>
 </body>
 </html>

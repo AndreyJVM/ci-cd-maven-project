@@ -76,6 +76,15 @@ ci-cd-maven-project/
 │   │   └── resources/
 │   │       ├── static/           # CSS, JS, изображения
 │   │       ├── templates/        # Thymeleaf шаблоны
+│   │       ├── fragments/
+│   │       │   ├── head.html          # <head> (Bootstrap, CSS, мета)
+│   │       │   ├── navbar.html        # Навигация + переключатель темы
+│   │       │   └── footer.html        # Подвал (footer)
+│   │       ├── index.html             # Главная (использует фрагменты)
+│   │       ├── about.html             # Обо мне
+│   │       ├── projects.html          # Проекты
+│   │       ├── links.html             # Сокращатель ссылок
+│   │       └── error.html             # 404
 │   │       └── application*.properties
 │   └── test/                     # Модульные и интеграционные тесты
 ├── ssl/                          # SSL-сертификаты (только на сервере)

@@ -1,44 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<head th:replace="~{fragments/head :: head('Проекты')}"></head>
 <body>
-<nav>
-    <div class="container">
-        <div class="nav-brand">
-            <a href="/" style="text-decoration: none; color: inherit;">Andrey Vorobev</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about">Обо мне</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/links">Сокращатель ссылок</a></li>
-        </ul>
-    </div>
-</nav>
 
-<div class="container">
-    <h1>Мои проекты</h1>
-    <div class="projects-grid">
-        <div class="project-card">
-            <h3>🚀 CI/CD для Java</h3>
-            <p>Автоматическая сборка, тестирование и деплой приложения на VDS с помощью GitHub Actions, Docker и Nginx.</p>
-            <p><strong>Технологии:</strong> Java, Spring Boot, Docker, Nginx, PostgreSQL</p>
-            <a href="https://github.com/AndreyJVM/ci-cd-maven-project" class="btn btn-primary">GitHub</a>
+<div th:replace="~{fragments/navbar :: navbar('projects')}"></div>
+
+<div class="container py-5">
+    <h1 class="fw-bold mb-4">🚀 Мои проекты</h1>
+    <p class="text-muted mb-4">Здесь собраны проекты, над которыми я работал и продолжаю развивать.</p>
+
+    <div class="row g-4">
+        <!-- Проект 1 -->
+        <div class="col-md-6">
+            <div class="card-custom card p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-server fa-2x me-3" style="color: #667eea;"></i>
+                    <h5 class="card-title mb-0">Samba Web UI</h5>
+                </div>
+                <p class="card-text">Веб-интерфейс для управления Samba-сервером через SSH.
+                    Создание, редактирование и удаление общих папок (шар), управление пользователями.</p>
+                <div class="mt-2">
+                    <span class="badge bg-primary me-1">Java 17</span>
+                    <span class="badge bg-info me-1">Spring Boot</span>
+                    <span class="badge bg-dark me-1">Docker</span>
+                    <span class="badge bg-warning text-dark">GitHub Actions</span>
+                </div>
+                <a href="https://github.com/AndreyJVM/samba-web-ui" target="_blank" class="btn btn-primary-custom mt-3">
+                    <i class="fab fa-github me-2"></i>Посмотреть на GitHub
+                </a>
+            </div>
         </div>
-        <div class="project-card">
-            <h3>🔗 Сервис сокращения ссылок</h3>
-            <p>REST API для создания коротких ссылок с подсчетом переходов и статистикой.</p>
-            <p><strong>Технологии:</strong> Java, Spring Data JPA, PostgreSQL</p>
-            <a href="/links" class="btn btn-primary">Попробовать</a>
+
+        <!-- Проект 2 -->
+        <div class="col-md-6">
+            <div class="card-custom card p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-link fa-2x me-3" style="color: #28a745;"></i>
+                    <h5 class="card-title mb-0">Сервис коротких ссылок</h5>
+                </div>
+                <p class="card-text">REST API для сокращения ссылок с подсчётом переходов и статистикой.
+                    Автоматический деплой через CI/CD.</p>
+                <div class="mt-2">
+                    <span class="badge bg-primary me-1">Java 17</span>
+                    <span class="badge bg-info me-1">Spring Boot</span>
+                    <span class="badge bg-success me-1">PostgreSQL</span>
+                    <span class="badge bg-dark">Docker</span>
+                </div>
+                <a href="/links" class="btn btn-primary-custom mt-3">
+                    <i class="fas fa-arrow-right me-2"></i>Попробовать
+                </a>
+            </div>
+        </div>
+
+        <!-- Проект 3 (добавьте свои) -->
+        <div class="col-md-6">
+            <div class="card-custom card p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-cog fa-2x me-3" style="color: #fd7e14;"></i>
+                    <h5 class="card-title mb-0">Ещё проект</h5>
+                </div>
+                <p class="card-text">Краткое описание вашего следующего проекта. Добавьте сюда что-то
+                    интересное, чем вы гордитесь.</p>
+                <div class="mt-2">
+                    <span class="badge bg-secondary me-1">В разработке</span>
+                </div>
+                <button class="btn btn-outline-custom mt-3 disabled">
+                    <i class="fas fa-hourglass-half me-2"></i>Скоро
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
-<footer>...</footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div th:replace="~{fragments/navbar :: theme-script}"></div>
 </body>
 </html>

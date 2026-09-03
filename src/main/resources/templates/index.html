@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Андрей Воробьев | DevOps & Java Developer</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<head th:replace="~{fragments/head :: head('Главная')}"></head>
 <body>
-<nav>
-    <div class="container">
-        <div class="nav-brand">
-            <a href="/" style="text-decoration: none; color: inherit;">Andrey Vorobev</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about">Обо мне</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/links">Сокращатель ссылок</a></li>
-        </ul>
-    </div>
-</nav>
 
-<header class="hero">
+<!-- Навигация -->
+<div th:replace="~{fragments/navbar :: navbar('home')}"></div>
+
+<!-- Герой -->
+<section class="hero">
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-text">
+        <div class="row align-items-center">
+            <div class="col-md-7 text-start">
                 <h1>Привет, я Андрей 👋</h1>
                 <p class="subtitle">Java-разработчик и DevOps-инженер</p>
-                <p>Создаю надежные и масштабируемые решения</p>
-                <div class="hero-buttons">
-                    <a href="/about" class="btn btn-primary">Обо мне</a>
-                    <a href="/projects" class="btn btn-secondary">Проекты</a>
+                <p class="mt-3" style="opacity: 0.9; font-size: 1.1rem;">
+                    Создаю надёжные и масштабируемые решения.
+                    Автоматизирую всё, что можно автоматизировать.
+                </p>
+                <div class="mt-4">
+                    <a href="/about" class="btn btn-primary-custom me-2">Обо мне</a>
+                    <a href="/projects" class="btn btn-outline-custom">Проекты</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="/images/avatar.jpg" alt="Андрей Воробьев" class="avatar">
-            </div>
-        </div>
-    </div>
-</header>
-
-<section class="skills">
-    <div class="container">
-        <h2>Мои навыки</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>☕ Java</h3>
-                <p>Spring Boot, Hibernate, Maven, JUnit</p>
-            </div>
-            <div class="skill-card">
-                <h3>🐳 DevOps</h3>
-                <p>Docker, Kubernetes, CI/CD (GitHub Actions)</p>
-            </div>
-            <div class="skill-card">
-                <h3>🗄️ Базы данных</h3>
-                <p>PostgreSQL, MySQL, Redis</p>
-            </div>
-            <div class="skill-card">
-                <h3>☁️ Облачные технологии</h3>
-                <p>AWS, DigitalOcean, VDS</p>
+            <div class="col-md-5 text-center">
+                <img src="/images/avatar.jpg" alt="Андрей Воробьев" class="avatar"
+                     onerror="this.src='https://ui-avatars.com/api/?name=Andrey+Vorobev&background=667eea&color=fff&size=180'">
             </div>
         </div>
     </div>
 </section>
 
-<footer>
-    <div class="container">
-        <p>© 2026 Андрей Воробьев. Все права защищены.</p>
-        <div class="social-links">
-            <a href="https://github.com/AndreyJVM">GitHub</a>
-            <a href="https://t.me/AndreyAQA">Telegram</a>
-            <a href="mailto:andrey.vorobev.aqa@gmail.com">Email</a>
+<!-- Навыки -->
+<div class="container">
+    <h2 class="text-center mb-4 fw-bold">Мои навыки</h2>
+    <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="card-custom card p-4 text-center">
+                <i class="fas fa-coffee fa-3x mb-3" style="color: #667eea;"></i>
+                <h5 class="card-title">Java</h5>
+                <p class="card-text small">Spring Boot, Hibernate, Maven, JUnit</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card-custom card p-4 text-center">
+                <i class="fas fa-docker fa-3x mb-3" style="color: #2496ed;"></i>
+                <h5 class="card-title">DevOps</h5>
+                <p class="card-text small">Docker, CI/CD, GitHub Actions, Nginx</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card-custom card p-4 text-center">
+                <i class="fas fa-database fa-3x mb-3" style="color: #336791;"></i>
+                <h5 class="card-title">Базы данных</h5>
+                <p class="card-text small">PostgreSQL, MySQL, Redis</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card-custom card p-4 text-center">
+                <i class="fas fa-cloud fa-3x mb-3" style="color: #ff9900;"></i>
+                <h5 class="card-title">Облачные технологии</h5>
+                <p class="card-text small">AWS, VDS, Linux</p>
+            </div>
         </div>
     </div>
-</footer>
+</div>
 
-<script src="/js/main.js"></script>
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Тёмная тема -->
+<div th:replace="~{fragments/navbar :: theme-script}"></div>
 </body>
 </html>
