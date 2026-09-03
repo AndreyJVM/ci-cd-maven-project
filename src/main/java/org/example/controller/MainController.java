@@ -1,29 +1,27 @@
 package org.example.controller;
 
-import org.example.dto.CreateLinkRequest;
-import org.example.dto.LinkResponse;
-import org.example.entity.Link;
-import org.example.service.LinkService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.dto.QrRequest;
+import org.example.dto.QrResponse;
+import org.example.service.QrCodeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@Slf4j
 @Controller
+@RequiredArgsConstructor
 public class MainController {
 
-    private final LinkService linkService;
-    private final String baseUrl;
+    private final QrCodeService qrCodeService;
 
-    public MainController(LinkService linkService,
-                          @Value("${app.base-url:https://vorobevaqa.ru}") String baseUrl) {
-        this.linkService = linkService;
-        this.baseUrl = baseUrl;
-    }
+    // ===== СТРАНИЦЫ =====
 
-    // Страницы портфолио
     @GetMapping("/")
     public String home() {
         return "index";
@@ -39,30 +37,18 @@ public class MainController {
         return "projects";
     }
 
-    @GetMapping("/links")
-    public String linkPage() {
-        return "links";
+    @GetMapping("/qr")
+    public String qrPage() {
+        return "qr";
     }
 
-    // API для сокращения ссылок
-    @PostMapping("/api/links")
+    // ===== API QR-ГЕНЕРАТОРА =====
+
+    @PostMapping("/api/qr")
     @ResponseBody
-    public ResponseEntity<LinkResponse> createShortLink(@Valid @RequestBody CreateLinkRequest request) {
-        Link link = linkService.createShortLink(request.getUrl());
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new LinkResponse(link, baseUrl));
-    }
-
-    @GetMapping("/{shortCode}")
-    public String redirectToOriginal(@PathVariable String shortCode) {
-        String originalUrl = linkService.getOriginalUrlAndIncrement(shortCode);
-        return "redirect:" + originalUrl;
-    }
-
-    @GetMapping("/api/links/{shortCode}/stats")
-    @ResponseBody
-    public ResponseEntity<LinkResponse> getLinkStats(@PathVariable String shortCode) {
-        Link link = linkService.getLinkStats(shortCode);
-        return ResponseEntity.ok(new LinkResponse(link, baseUrl));
+    public ResponseEntity<QrResponse> generateQrCode(@Valid @RequestBody QrRequest request) {
+        log.info("Generating QR code for URL: {}", request.getUrl());
+        String qrCode = qrCodeService.generateQrCodeBase64(request.getUrl(), 300, 300);
+        return ResponseEntity.ok(new QrResponse(request.getUrl(), qrCode));
     }
 }

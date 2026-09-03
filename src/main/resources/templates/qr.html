@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('QR-генератор')}"></head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar('qr')}"></div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="fw-bold mb-3">📱 Генератор QR-кодов</h1>
+            <p class="text-muted mb-4">Вставьте ссылку и получите готовый QR-код для скачивания</p>
+
+            <div class="card-custom card p-4">
+                <div class="input-group mb-3">
+                    <input type="url" id="url-input" class="form-control form-control-custom"
+                           placeholder="https://example.com" value="https://vorobevaqa.ru">
+                    <button onclick="generateQR()" class="btn btn-primary-custom">
+                        <i class="fas fa-qrcode me-1"></i>Сгенерировать
+                    </button>
+                </div>
+
+                <div id="result" style="display: none;">
+                    <div class="alert alert-success d-flex align-items-center p-3 flex-wrap">
+                        <div class="flex-grow-1">
+                            <strong>QR-код готов!</strong><br>
+                            <span id="qr-url-text" class="small text-break"></span>
+                        </div>
+                        <div class="text-center mx-3 my-2">
+                            <img id="qr-code-image" src="" alt="QR Code" style="max-width: 120px; border-radius: 12px;">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button onclick="downloadQR()" class="btn btn-sm btn-success">
+                                <i class="fas fa-download me-1"></i>Скачать
+                            </button>
+                            <button onclick="copyToClipboard()" class="btn btn-sm btn-outline-custom">
+                                <i class="fas fa-copy me-1"></i>Копировать ссылку
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="error" style="display: none;">
+                    <div class="alert alert-danger" id="error-text"></div>
+                </div>
+            </div>
+
+            <!-- Примеры использования -->
+            <div class="mt-4">
+                <p class="text-muted small">
+                    <i class="fas fa-lightbulb me-1"></i>
+                    Попробуйте вставить ссылку на ваш профиль GitHub, Telegram или любой другой ресурс.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div th:replace="~{fragments/navbar :: theme-script}"></div>
+
+<script>
+    let currentQrData = null;
+
+    async function generateQR() {
+        const input = document.getElementById('url-input');
+        const url = input.value.trim();
+        const resultDiv = document.getElementById('result');
+        const errorDiv = document.getElementById('error');
+
+        resultDiv.style.display = 'none';
+        errorDiv.style.display = 'none';
+
+        if (!url) {
+            showError('Пожалуйста, введите ссылку');
+            return;
+        }
+
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            showError('Введите корректную ссылку (начинающуюся с http:// или https://)');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/qr', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка сервера');
+            }
+
+            const data = await response.json();
+            currentQrData = data;
+
+            document.getElementById('qr-url-text').textContent = data.url;
+            document.getElementById('qr-code-image').src = 'data:image/png;base64,' + data.qrCode;
+            resultDiv.style.display = 'block';
+        } catch (error) {
+            showError('Не удалось сгенерировать QR-код. Проверьте ссылку.');
+        }
+    }
+
+    function showError(message) {
+        document.getElementById('error-text').textContent = message;
+        document.getElementById('error').style.display = 'block';
+    }
+
+    function downloadQR() {
+        if (!currentQrData) return;
+
+        const link = document.createElement('a');
+        link.download = 'qr-code-' + Date.now() + '.png';
+        link.href = 'data:image/png;base64,' + currentQrData.qrCode;
+        link.click();
+    }
+
+    function copyToClipboard() {
+        const text = document.getElementById('qr-url-text').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Ссылка скопирована в буфер обмена!');
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Ссылка скопирована в буфер обмена!');
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(generateQR, 300);
+    });
+</script>
+</body>
+</html>

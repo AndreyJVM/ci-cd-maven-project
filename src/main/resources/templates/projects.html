@@ -10,63 +10,110 @@
     <p class="text-muted mb-4">Здесь собраны проекты, над которыми я работал и продолжаю развивать.</p>
 
     <div class="row g-4">
-        <!-- Проект 1 -->
+        <!-- Проект 1: Samba Web UI -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
                     <i class="fas fa-server fa-2x me-3" style="color: #667eea;"></i>
                     <h5 class="card-title mb-0">Samba Web UI</h5>
                 </div>
-                <p class="card-text">Веб-интерфейс для управления Samba-сервером через SSH.
-                    Создание, редактирование и удаление общих папок (шар), управление пользователями.</p>
+                <p class="card-text">
+                    Веб-интерфейс для управления Samba-сервером через SSH.
+                    Позволяет создавать, редактировать и удалять общие папки,
+                    управлять пользователями Samba.
+                </p>
                 <div class="mt-2">
                     <span class="badge bg-primary me-1">Java 17</span>
                     <span class="badge bg-info me-1">Spring Boot</span>
                     <span class="badge bg-dark me-1">Docker</span>
                     <span class="badge bg-warning text-dark">GitHub Actions</span>
                 </div>
-                <a href="https://github.com/AndreyJVM/samba-web-ui" target="_blank" class="btn btn-primary-custom mt-3">
-                    <i class="fab fa-github me-2"></i>Посмотреть на GitHub
-                </a>
+                <div class="mt-3 d-flex gap-2">
+                    <a href="https://github.com/AndreyJVM/samba-web-ui" target="_blank" class="btn btn-primary-custom">
+                        <i class="fab fa-github me-2"></i>GitHub
+                    </a>
+                    <span class="badge bg-success d-flex align-items-center">
+                            <i class="fas fa-check-circle me-1"></i>В разработке
+                        </span>
+                </div>
             </div>
         </div>
 
-        <!-- Проект 2 -->
+        <!-- Проект 2: Генератор QR-кодов -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-link fa-2x me-3" style="color: #28a745;"></i>
-                    <h5 class="card-title mb-0">Сервис коротких ссылок</h5>
+                    <i class="fas fa-qrcode fa-2x me-3" style="color: #28a745;"></i>
+                    <h5 class="card-title mb-0">Генератор QR-кодов</h5>
                 </div>
-                <p class="card-text">REST API для сокращения ссылок с подсчётом переходов и статистикой.
-                    Автоматический деплой через CI/CD.</p>
+                <p class="card-text">
+                    Бесплатный сервис для генерации QR-кодов по ссылке.
+                    Быстро, просто, с возможностью скачать готовое изображение.
+                </p>
                 <div class="mt-2">
                     <span class="badge bg-primary me-1">Java 17</span>
                     <span class="badge bg-info me-1">Spring Boot</span>
-                    <span class="badge bg-success me-1">PostgreSQL</span>
-                    <span class="badge bg-dark">Docker</span>
+                    <span class="badge bg-warning text-dark">ZXing</span>
                 </div>
-                <a href="/links" class="btn btn-primary-custom mt-3">
-                    <i class="fas fa-arrow-right me-2"></i>Попробовать
-                </a>
+                <div class="mt-3 d-flex gap-2">
+                    <a href="/qr" class="btn btn-primary-custom">
+                        <i class="fas fa-arrow-right me-2"></i>Попробовать
+                    </a>
+                    <span class="badge bg-success d-flex align-items-center">
+                            <i class="fas fa-check-circle me-1"></i>Работает
+                        </span>
+                </div>
             </div>
         </div>
 
-        <!-- Проект 3 (добавьте свои) -->
+        <!-- Проект 3: CI/CD Pipeline -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-cog fa-2x me-3" style="color: #fd7e14;"></i>
-                    <h5 class="card-title mb-0">Ещё проект</h5>
+                    <i class="fas fa-rocket fa-2x me-3" style="color: #fd7e14;"></i>
+                    <h5 class="card-title mb-0">CI/CD Pipeline</h5>
                 </div>
-                <p class="card-text">Краткое описание вашего следующего проекта. Добавьте сюда что-то
-                    интересное, чем вы гордитесь.</p>
+                <p class="card-text">
+                    Полноценный CI/CD пайплайн для Java-приложений:
+                    автоматическая сборка, тестирование, контейнеризация и деплой на VDS.
+                </p>
                 <div class="mt-2">
-                    <span class="badge bg-secondary me-1">В разработке</span>
+                    <span class="badge bg-dark me-1">GitHub Actions</span>
+                    <span class="badge bg-info me-1">Docker</span>
+                    <span class="badge bg-success">Nginx</span>
                 </div>
-                <button class="btn btn-outline-custom mt-3 disabled">
-                    <i class="fas fa-hourglass-half me-2"></i>Скоро
-                </button>
+                <div class="mt-3 d-flex gap-2">
+                        <span class="badge bg-success d-flex align-items-center">
+                            <i class="fas fa-check-circle me-1"></i>Готово
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Проект 4: Сайт-визитка -->
+        <div class="col-md-6">
+            <div class="card-custom card p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-globe fa-2x me-3" style="color: #17a2b8;"></i>
+                    <h5 class="card-title mb-0">Сайт-визитка</h5>
+                </div>
+                <p class="card-text">
+                    Персональный сайт-портфолио с современным дизайном,
+                    тёмной темой и интеграцией с генератором QR-кодов.
+                </p>
+                <div class="mt-2">
+                    <span class="badge bg-primary me-1">Spring Boot</span>
+                    <span class="badge bg-info me-1">Thymeleaf</span>
+                    <span class="badge bg-dark">Bootstrap</span>
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                    <a href="/" class="btn btn-primary-custom">
+                        <i class="fas fa-eye me-2"></i>Посмотреть
+                    </a>
+                    <span class="badge bg-success d-flex align-items-center">
+                            <i class="fas fa-check-circle me-1"></i>Готово
+                        </span>
+                </div>
             </div>
         </div>
     </div>
