@@ -1,0 +1,25 @@
+/* ==========================================
+   QR-СТРАНИЦА (дополнительные стили)
+   ========================================== */
+
+/* Если нужно что-то специфичное для QR */
+.input-group .btn-primary-custom {
+    border-radius: 0 50px 50px 0;
+}
+
+#result .alert {
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid #28a745;
+}
+
+/* ===== TOAST (уведомление) ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

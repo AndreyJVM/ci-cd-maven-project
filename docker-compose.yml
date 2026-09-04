@@ -1,18 +1,4 @@
 services:
-  # ========== ПОСТГРЕС ==========
-  postgres:
-    image: postgres:17-alpine
-    container_name: my-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - app-network
-
   # ========== JAVA-ПРИЛОЖЕНИЕ ==========
   app:
     image: andreyvorobevaqa/ci-cd-maven-project:latest
@@ -20,13 +6,8 @@ services:
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       APP_BASE_URL: ${APP_BASE_URL}
-      JAVA_OPTS: -Xmx256m -Xms128m
-    depends_on:
-      - postgres
+      JAVA_OPTS: "-Xmx256m -Xms128m"
     networks:
       - app-network
 
@@ -45,10 +26,6 @@ services:
       - app
     networks:
       - app-network
-
-# ========== ТОМА ==========
-volumes:
-  postgres_data:
 
 # ========== СЕТЬ ==========
 networks:
