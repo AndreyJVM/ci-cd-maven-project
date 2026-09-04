@@ -8,6 +8,10 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       APP_BASE_URL: ${APP_BASE_URL}
       JAVA_OPTS: "-Xmx256m -Xms128m"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     networks:
       - app-network
 
