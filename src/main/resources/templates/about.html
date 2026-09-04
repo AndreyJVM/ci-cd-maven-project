@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Обо мне')}"></head>
+<head th:replace="~{fragments/head :: head(
+    title='Обо мне',
+    description='Узнайте больше об Андрее Воробьеве — Java-разработчике и DevOps-инженере. Опыт, навыки и профессиональный путь.',
+    keywords='Java разработчик, DevOps, портфолио, опыт, навыки, Андрей Воробьев',
+    ogTitle='Андрей Воробьев — Обо мне',
+    ogDescription='Java-разработчик и DevOps-инженер. Создаю надёжные и масштабируемые системы.',
+    ogImage='https://vorobevaqa.ru/images/og-image.jpg',
+    ogUrl='https://vorobevaqa.ru/about'
+)}"></head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar('about')}"></div>

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Главная')}"></head>
+<head th:replace="~{fragments/head :: head(
+    title='Главная',
+    description='Персональный сайт-портфолио Андрея Воробьева — Java-разработчик и DevOps-инженер. Проекты, навыки и генератор QR-кодов.',
+    keywords='Java, DevOps, разработчик, портфолио, Spring Boot, Docker, CI/CD',
+    ogTitle='Андрей Воробьев — Java-разработчик и DevOps-инженер',
+    ogDescription='Сайт-портфолио с проектами, навыками и генератором QR-кодов.',
+    ogImage='https://vorobevaqa.ru/images/og-image.jpg',
+    ogUrl='https://vorobevaqa.ru/'
+)}"></head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar('home')}"></div>
@@ -26,7 +34,7 @@
                 </div>
             </div>
             <div class="col-md-5 text-center">
-                <img src="/images/avatar.jpg" alt="Андрей Воробьев" class="avatar"
+                <img src="/images/avatar.jpg" alt="Андрей Воробьев — Java-разработчик" class="avatar"
                      onerror="this.src='https://ui-avatars.com/api/?name=Andrey+Vorobev&background=667eea&color=fff&size=180'">
             </div>
         </div>

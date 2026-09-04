@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head('Проекты')}"></head>
+<head th:replace="~{fragments/head :: head(
+    title='Проекты',
+    description='Проекты Андрея Воробьева: Samba Web UI, генератор QR-кодов, CI/CD пайплайны. Java, Docker, Spring Boot, DevOps.',
+    keywords='Java проекты, DevOps проекты, Samba Web UI, QR-генератор, CI/CD',
+    ogTitle='Проекты Андрея Воробьева',
+    ogDescription='Реализованные проекты: Samba Web UI, генератор QR-кодов, CI/CD пайплайны.',
+    ogImage='https://vorobevaqa.ru/images/og-image.jpg',
+    ogUrl='https://vorobevaqa.ru/projects'
+)}"></head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar('projects')}"></div>
@@ -10,7 +18,7 @@
     <p class="text-muted mb-4">Здесь собраны проекты, над которыми я работал и продолжаю развивать.</p>
 
     <div class="row g-4">
-        <!-- Проект 1: Samba Web UI -->
+        <!-- Samba Web UI -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
@@ -39,7 +47,7 @@
             </div>
         </div>
 
-        <!-- Проект 2: Генератор QR-кодов -->
+        <!-- QR-генератор -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
@@ -66,7 +74,7 @@
             </div>
         </div>
 
-        <!-- Проект 3: CI/CD Pipeline -->
+        <!-- CI/CD Pipeline -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
@@ -90,7 +98,7 @@
             </div>
         </div>
 
-        <!-- Проект 4: Сайт-визитка -->
+        <!-- Сайт-визитка -->
         <div class="col-md-6">
             <div class="card-custom card p-4">
                 <div class="d-flex align-items-center mb-3">
