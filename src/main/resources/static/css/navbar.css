@@ -1,46 +1,57 @@
-/* ==========================================
-   НАВИГАЦИЯ
-   ========================================== */
-
-.navbar-custom {
-    background-color: var(--nav-bg) !important;
-    box-shadow: var(--shadow);
-    transition: background-color 0.3s;
+.navbar {
+    background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--navbar-border);
+    padding: 0.75rem 0;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
-.navbar-custom .navbar-brand {
+
+.navbar-brand .brand-text {
     font-weight: 700;
-    color: var(--text-color) !important;
+    font-size: 1.35rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
 }
-.navbar-custom .navbar-brand i { color: #667eea; }
 
-.navbar-custom .nav-link {
-    color: var(--text-color) !important;
+.nav-link {
+    color: var(--text-muted) !important;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem !important;
     border-radius: 8px;
-    transition: background-color 0.2s;
-}
-.navbar-custom .nav-link:hover {
-    background-color: rgba(102, 126, 234, 0.1);
-}
-.navbar-custom .nav-link.active {
-    background-color: rgba(102, 126, 234, 0.15);
-    color: #667eea !important;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Переключатель темы */
+.nav-link:hover {
+    color: var(--text-color) !important;
+    background-color: rgba(99, 102, 241, 0.08);
+}
+
+.nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+}
+
+/* Кнопка переключения темы */
 .theme-toggle {
     background: transparent;
-    border: none;
-    font-size: 1.3rem;
+    border: 1px solid var(--card-border);
     color: var(--text-color);
-    cursor: pointer;
-    padding: 0.3rem 0.6rem;
     border-radius: 50%;
-    transition: background-color 0.2s, transform 0.2s;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
+
 .theme-toggle:hover {
-    background-color: rgba(102, 126, 234, 0.1);
-    transform: scale(1.1);
+    background-color: rgba(99, 102, 241, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: rotate(15deg);
 }

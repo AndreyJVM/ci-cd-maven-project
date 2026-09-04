@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<footer class="footer-custom" th:fragment="footer">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="mb-0 small">© 2026 Андрей Воробьев. Все права защищены.</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <a href="https://github.com/AndreyJVM" target="_blank" class="me-3">
-                    <i class="fab fa-github fa-lg"></i>
-                </a>
-                <a href="https://t.me/AndreyAQA" target="_blank" class="me-3">
-                    <i class="fab fa-telegram fa-lg"></i>
-                </a>
-                <a href="mailto:andrey.vorobev.aqa@gmail.com" target="_blank">
-                    <i class="fas fa-envelope fa-lg"></i>
-                </a>
-            </div>
+<body>
+<footer th:fragment="footer" class="mt-auto py-4 border-top">
+    <div class="container text-center">
+        <div class="mb-3 d-flex justify-content-center gap-3">
+            <a href="https://github.com/AndreyAQA" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://t.me/AndreyAQA" target="_blank" rel="noopener noreferrer" class="social-link" title="Telegram">
+                <i class="fab fa-telegram fa-lg"></i>
+            </a>
+            <a href="mailto:andrey.vorobev.qa@yandex.ru" class="social-link" title="Email">
+                <i class="fas fa-envelope fa-lg"></i>
+            </a>
         </div>
+        <p class="mb-0 text-muted small">
+            &copy; <span th:text="${#calendars.format(#calendars.createNow(), 'yyyy')}">2026</span> Андрей Воробьев. Все права защищены.
+        </p>
     </div>
 </footer>
+</body>
+</html>
