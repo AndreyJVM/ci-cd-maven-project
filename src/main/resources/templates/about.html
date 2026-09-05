@@ -87,47 +87,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Секция формы обратной связи -->
-    <div class="row justify-content-center" id="contact-section">
-        <div class="col-lg-8">
-            <div class="card p-4 p-md-5 shadow-sm">
-                <div class="text-center mb-4">
-                    <div class="d-inline-flex p-3 rounded-circle bg-primary-subtle text-primary mb-3">
-                        <i class="fab fa-vk fa-2x"></i>
-                    </div>
-                    <h3 class="fw-bold mb-2">Напишите мне</h3>
-                    <p class="text-muted">Есть предложение, проект или вопрос? Заполните форму — сообщение сохранится в базе и мгновенно придёт мне во ВКонтакте.</p>
-                </div>
-
-                <div id="feedbackAlert" class="alert d-none py-2 px-3 small mb-3" role="alert"></div>
-
-                <form id="feedbackForm">
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="feedbackName" class="form-label fw-semibold">Ваше имя</label>
-                            <input type="text" class="form-control" id="feedbackName" placeholder="Алексей" required minlength="2" maxlength="100">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="feedbackContact" class="form-label fw-semibold">VK или Email</label>
-                            <input type="text" class="form-control" id="feedbackContact" placeholder="vk.com/id... или email@domain.ru" required minlength="3" maxlength="150">
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="feedbackMessage" class="form-label fw-semibold">Сообщение</label>
-                        <textarea class="form-control" id="feedbackMessage" rows="4" placeholder="Опишите суть вопроса или предложения..." required minlength="10" maxlength="3000"></textarea>
-                    </div>
-
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary px-4 py-2" id="feedbackSubmitBtn">
-                            <i class="fas fa-paper-plane me-2"></i>Отправить сообщение
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
