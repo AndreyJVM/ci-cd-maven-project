@@ -21,20 +21,15 @@ class QrCodeServiceTest {
     @DisplayName("Успешная генерация валидного Base64 PNG изображения")
     void shouldGenerateValidBase64QrCode() {
         String testUrl = "https://vorobevaqa.ru";
-        int width = 300;
-        int height = 300;
+        String base64Image = qrCodeService.generateQrCodeBase64(testUrl);
 
-        String base64Image = qrCodeService.generateQrCodeBase64(testUrl, width, height);
+        assertNotNull(base64Image);
+        assertFalse(base64Image.isBlank());
 
-        // Проверяем, что результат не пустой
-        assertNotNull(base64Image, "Base64 строка не должна быть null");
-        assertFalse(base64Image.isBlank(), "Base64 строка не должна быть пустой");
-
-        // Проверяем, что результат валидно декодируется в массив байт
         byte[] decodedBytes = Base64.getDecoder().decode(base64Image);
-        assertTrue(decodedBytes.length > 0, "Массив байт не должен быть пустым");
+        assertTrue(decodedBytes.length > 0);
 
-        // Проверяем сигнатуру заголовка PNG файла (0x89, 'P', 'N', 'G')
+        // Проверка заголовка PNG
         assertEquals((byte) 0x89, decodedBytes[0]);
         assertEquals((byte) 'P', decodedBytes[1]);
         assertEquals((byte) 'N', decodedBytes[2]);
@@ -42,10 +37,9 @@ class QrCodeServiceTest {
     }
 
     @Test
-    @DisplayName("Выброс исключения при передаче null вместо текста")
-    void shouldThrowExceptionWhenTextIsNull() {
-        assertThrows(RuntimeException.class, () ->
-                qrCodeService.generateQrCodeBase64(null, 300, 300)
-        );
+    @DisplayName("Выброс IllegalArgumentException при пустой строке или null")
+    void shouldThrowExceptionWhenTextIsBlankOrNull() {
+        assertThrows(IllegalArgumentException.class, () -> qrCodeService.generateQrCodeBase64(null));
+        assertThrows(IllegalArgumentException.class, () -> qrCodeService.generateQrCodeBase64("   "));
     }
 }
