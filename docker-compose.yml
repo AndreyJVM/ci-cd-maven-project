@@ -28,8 +28,8 @@ services:
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-portfolio_user}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       APP_BASE_URL: ${APP_BASE_URL:-https://vorobevaqa.ru}
-      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
+      VK_BOT_TOKEN: ${VK_BOT_TOKEN}
+      VK_USER_ID: ${VK_USER_ID}
       JAVA_OPTS: "-Xmx256m -Xms128m"
     deploy:
       resources:

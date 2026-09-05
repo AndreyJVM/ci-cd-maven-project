@@ -15,7 +15,7 @@ public class FeedbackRequest {
     @Size(min = 2, max = 100, message = "Имя должно содержать от 2 до 100 символов")
     private String name;
 
-    @NotBlank(message = "Укажите контакт для связи (Telegram или Email)")
+    @NotBlank(message = "Укажите контакт для связи (VK или Email)")
     @Size(min = 3, max = 150, message = "Контактная информация должна содержать от 3 до 150 символов")
     private String contact;
 

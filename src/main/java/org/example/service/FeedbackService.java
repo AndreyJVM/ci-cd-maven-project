@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
-    private final TelegramNotificationService telegramService;
+    private final VkNotificationService vkService;
 
     @Transactional
     public void processFeedback(FeedbackRequest request) {
@@ -25,9 +25,9 @@ public class FeedbackService {
                 .build();
 
         feedbackRepository.save(feedback);
-        log.info("Saved feedback message from: {}", feedback.getName());
+        log.info("Saved feedback message to database from: {}", feedback.getName());
 
-        telegramService.sendFeedbackNotification(
+        vkService.sendFeedbackNotification(
                 feedback.getName(),
                 feedback.getContact(),
                 feedback.getMessage()
