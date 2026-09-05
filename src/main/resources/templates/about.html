@@ -1,58 +1,138 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head th:replace="~{fragments/head :: head(
     title='Обо мне',
-    description='Узнайте больше об Андрее Воробьеве — Java-разработчике и DevOps-инженере. Опыт, навыки и профессиональный путь.',
-    keywords='Java разработчик, DevOps, портфолио, опыт, навыки, Андрей Воробьев',
-    ogTitle='Андрей Воробьев — Обо мне',
-    ogDescription='Java-разработчик и DevOps-инженер. Создаю надёжные и масштабируемые системы.',
-    ogImage='https://vorobevaqa.ru/images/og-image.jpg',
+    description='Информация об Андрее Воробьеве: навыки, опыт, используемый технологический стек.',
+    keywords='Андрей Воробьев, навыки, Java, Spring, Docker, PostgreSQL, QA',
+    ogTitle='Обо мне | Андрей Воробьев',
+    ogDescription='Стек технологий, опыт и подходы к разработке.',
+    ogImage='/images/og-about.png',
     ogUrl='https://vorobevaqa.ru/about'
-)}"></head>
+)}">
+</head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar('about')}"></div>
 
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="fw-bold mb-4">👋 Обо мне</h1>
+<main class="container py-5">
+    <!-- Секция профиля и навыков -->
+    <div class="row g-5 mb-5">
+        <div class="col-lg-7">
+            <h1 class="fw-bold mb-4">Обо мне</h1>
+            <p class="lead text-muted mb-4">
+                Инженер, увлечённый созданием отказоустойчивых систем и качественного программного обеспечения.
+            </p>
+            <div class="card p-4 mb-4 shadow-sm">
+                <h5 class="fw-bold mb-3"><i class="fas fa-bullseye me-2 text-primary"></i>Мой подход к работе</h5>
+                <p class="text-muted mb-2">
+                    Я верю, что разработка и тестирование — это не изолированные этапы, а единый процесс поставки ценности. Любой функционал должен быть:
+                </p>
+                <ul class="text-muted mb-0 ps-3">
+                    <li class="mb-1">Понятным и поддерживаемым в коде.</li>
+                    <li class="mb-1">Автоматически проверяемым тестами в пайплайне.</li>
+                    <li>Легко разворачиваемым в изолированных контейнерах без ручной рутины.</li>
+                </ul>
+            </div>
 
-            <div class="card-custom card p-4 mb-4">
-                <p class="lead">
-                    Привет! Меня зовут <strong>Андрей Воробьев</strong>,
-                    я Java-разработчик и DevOps-инженер.
+            <div class="card p-4 shadow-sm">
+                <h5 class="fw-bold mb-3"><i class="fas fa-graduation-cap me-2 text-primary"></i>Текущий фокус</h5>
+                <p class="text-muted mb-0">
+                    Углубление в архитектуру распределенных систем, профилирование производительности JVM, автоматизация инфраструктуры и построение мониторинга.
                 </p>
-                <p>
-                    Я увлекаюсь созданием надёжных и масштабируемых систем,
-                    автоматизацией процессов и изучением новых технологий.
-                </p>
-                <p>
-                    Мой путь в IT начался с Java, а сейчас я активно развиваюсь
-                    в области DevOps: Docker, Kubernetes, CI/CD, облачные технологии.
-                </p>
-                <hr>
-                <div class="row text-center">
-                    <div class="col-4">
-                        <div class="fw-bold fs-3" style="color: #667eea;">Java</div>
-                        <small class="text-muted">Основной стек</small>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card p-4 shadow-sm h-100">
+                <h4 class="fw-bold mb-4"><i class="fas fa-layer-group me-2 text-primary"></i>Технологический стек</h4>
+
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted small fw-bold mb-2">Языки и фреймворки</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge tech-badge">Java 17/21</span>
+                        <span class="badge tech-badge">Spring Boot 3</span>
+                        <span class="badge tech-badge">Spring Data JPA</span>
+                        <span class="badge tech-badge">Thymeleaf</span>
                     </div>
-                    <div class="col-4">
-                        <div class="fw-bold fs-3" style="color: #2496ed;">Docker</div>
-                        <small class="text-muted">Контейнеризация</small>
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted small fw-bold mb-2">Базы данных & Хранилища</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge tech-badge">PostgreSQL</span>
+                        <span class="badge tech-badge">H2</span>
+                        <span class="badge tech-badge">Redis</span>
                     </div>
-                    <div class="col-4">
-                        <div class="fw-bold fs-3" style="color: #28a745;">CI/CD</div>
-                        <small class="text-muted">Автоматизация</small>
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted small fw-bold mb-2">Инфраструктура & DevOps</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge tech-badge">Docker & Compose</span>
+                        <span class="badge tech-badge">GitHub Actions</span>
+                        <span class="badge tech-badge">Nginx</span>
+                        <span class="badge tech-badge">Linux / Ubuntu</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h6 class="text-uppercase text-muted small fw-bold mb-2">Тестирование & Качество</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge tech-badge">JUnit 5</span>
+                        <span class="badge tech-badge">Mockito</span>
+                        <span class="badge tech-badge">REST Assured</span>
+                        <span class="badge tech-badge">Postman</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Секция формы обратной связи -->
+    <div class="row justify-content-center" id="contact-section">
+        <div class="col-lg-8">
+            <div class="card p-4 p-md-5 shadow-sm">
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex p-3 rounded-circle bg-primary-subtle text-primary mb-3">
+                        <i class="fas fa-paper-plane fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">Напишите мне</h3>
+                    <p class="text-muted">Есть предложение, проект или вопрос? Заполните форму — сообщение сохранится в базе и моментально прилетит мне в Telegram.</p>
+                </div>
+
+                <div id="feedbackAlert" class="alert d-none py-2 px-3 small mb-3" role="alert"></div>
+
+                <form id="feedbackForm">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="feedbackName" class="form-label fw-semibold">Ваше имя</label>
+                            <input type="text" class="form-control" id="feedbackName" placeholder="Алексей" required minlength="2" maxlength="100">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="feedbackContact" class="form-label fw-semibold">Telegram или Email</label>
+                            <input type="text" class="form-control" id="feedbackContact" placeholder="@username или name@example.com" required minlength="3" maxlength="150">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="feedbackMessage" class="form-label fw-semibold">Сообщение</label>
+                        <textarea class="form-control" id="feedbackMessage" rows="4" placeholder="Опишите суть вопроса или предложения..." required minlength="10" maxlength="3000"></textarea>
+                    </div>
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary px-4 py-2" id="feedbackSubmitBtn">
+                            <i class="fas fa-paper-plane me-2"></i>Отправить сообщение
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/feedback.js}"></script>
 </body>
 </html>

@@ -1,17 +1,42 @@
 services:
-  # ========== JAVA-ПРИЛОЖЕНИЕ ==========
+  # ========== POSTGRESQL ==========
+  postgres:
+    image: postgres:17-alpine
+    container_name: my-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio_db}
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    networks:
+      - app-network
+
+  # ========== JAVA-APP ==========
   app:
     image: andreyvorobevaqa/ci-cd-maven-project:latest
     container_name: my-java-app
     restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      APP_BASE_URL: ${APP_BASE_URL}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-portfolio_db}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-portfolio_user}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      APP_BASE_URL: ${APP_BASE_URL:-https://vorobevaqa.ru}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
       JAVA_OPTS: "-Xmx256m -Xms128m"
     deploy:
       resources:
         limits:
           memory: 512M
+    depends_on:
+      - postgres
     networks:
       - app-network
 
@@ -32,7 +57,9 @@ services:
     networks:
       - app-network
 
-# ========== СЕТЬ ==========
+volumes:
+  postgres_data:
+
 networks:
   app-network:
     driver: bridge
