@@ -1,4 +1,4 @@
-package org.example.entity;
+package ru.vorobevaqa.entity;
 
 public enum SkillLevel {
     ADVANCED("Продвинутый", 90, "bg-success"),

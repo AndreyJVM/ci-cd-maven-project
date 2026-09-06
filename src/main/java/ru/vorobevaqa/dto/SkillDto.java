@@ -1,10 +1,10 @@
-package org.example.dto;
+package ru.vorobevaqa.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.entity.Skill;
+import ru.vorobevaqa.entity.Skill;
 
 import java.util.Arrays;
 import java.util.Collections;

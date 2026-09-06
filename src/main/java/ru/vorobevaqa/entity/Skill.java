@@ -1,4 +1,4 @@
-package org.example.entity;
+package ru.vorobevaqa.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
-package org.example.controller;
+package ru.vorobevaqa.controller;
 
-import org.example.dto.SkillDto;
-import org.example.service.GitHubService;
-import org.example.service.SkillService;
+import ru.vorobevaqa.dto.SkillDto;
+import ru.vorobevaqa.service.GitHubService;
+import ru.vorobevaqa.service.SkillService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

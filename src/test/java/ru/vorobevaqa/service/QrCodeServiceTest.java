@@ -1,4 +1,4 @@
-package org.example.service;
+package ru.vorobevaqa.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

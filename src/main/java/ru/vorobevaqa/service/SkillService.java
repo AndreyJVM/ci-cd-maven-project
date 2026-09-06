@@ -1,12 +1,12 @@
-package org.example.service;
+package ru.vorobevaqa.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.SkillDto;
-import org.example.entity.Skill;
-import org.example.entity.SkillCategory;
-import org.example.entity.SkillLevel;
-import org.example.repository.SkillRepository;
+import ru.vorobevaqa.dto.SkillDto;
+import ru.vorobevaqa.entity.Skill;
+import ru.vorobevaqa.entity.SkillCategory;
+import ru.vorobevaqa.entity.SkillLevel;
+import ru.vorobevaqa.repository.SkillRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

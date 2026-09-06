@@ -1,7 +1,7 @@
-package org.example.service;
+package ru.vorobevaqa.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.GitHubRepoDto;
+import ru.vorobevaqa.dto.GitHubRepoDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;

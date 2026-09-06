@@ -1,11 +1,11 @@
-package org.example.controller;
+package ru.vorobevaqa.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.QrRequest;
-import org.example.dto.QrResponse;
-import org.example.service.QrCodeService;
+import ru.vorobevaqa.dto.QrRequest;
+import ru.vorobevaqa.dto.QrResponse;
+import ru.vorobevaqa.service.QrCodeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

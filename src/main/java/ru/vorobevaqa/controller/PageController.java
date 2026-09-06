@@ -1,9 +1,9 @@
-package org.example.controller;
+package ru.vorobevaqa.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.SkillCategory;
-import org.example.service.GitHubService;
-import org.example.service.SkillService;
+import ru.vorobevaqa.entity.SkillCategory;
+import ru.vorobevaqa.service.GitHubService;
+import ru.vorobevaqa.service.SkillService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

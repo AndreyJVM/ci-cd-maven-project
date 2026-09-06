@@ -1,4 +1,4 @@
-package org.example.entity;
+package ru.vorobevaqa.entity;
 
 public enum SkillCategory {
     QA_AUTOMATION("Тестирование и автоматизация", "fas fa-vial"),

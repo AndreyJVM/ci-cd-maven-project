@@ -1,4 +1,4 @@
-package org.example.dto;
+package ru.vorobevaqa.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,9 +1,9 @@
-package org.example.controller;
+package ru.vorobevaqa.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.dto.SkillDto;
-import org.example.entity.SkillCategory;
-import org.example.service.SkillService;
+import ru.vorobevaqa.dto.SkillDto;
+import ru.vorobevaqa.entity.SkillCategory;
+import ru.vorobevaqa.service.SkillService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

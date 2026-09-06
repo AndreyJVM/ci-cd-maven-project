@@ -1,4 +1,4 @@
-package org.example.exception;
+package ru.vorobevaqa.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

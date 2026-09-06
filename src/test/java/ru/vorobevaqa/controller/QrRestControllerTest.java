@@ -1,9 +1,9 @@
-package org.example.controller;
+package ru.vorobevaqa.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.dto.QrRequest;
-import org.example.exception.GlobalExceptionHandler;
-import org.example.service.QrCodeService;
+import ru.vorobevaqa.dto.QrRequest;
+import ru.vorobevaqa.exception.GlobalExceptionHandler;
+import ru.vorobevaqa.service.QrCodeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

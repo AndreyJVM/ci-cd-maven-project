@@ -1,7 +1,7 @@
-package org.example.repository;
+package ru.vorobevaqa.repository;
 
-import org.example.entity.Skill;
-import org.example.entity.SkillCategory;
+import ru.vorobevaqa.entity.Skill;
+import ru.vorobevaqa.entity.SkillCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
