@@ -1,6 +1,7 @@
 package ru.vorobevaqa.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.vorobevaqa.controller.api.QrRestController;
 import ru.vorobevaqa.dto.QrRequest;
 import ru.vorobevaqa.exception.GlobalExceptionHandler;
 import ru.vorobevaqa.service.QrCodeService;

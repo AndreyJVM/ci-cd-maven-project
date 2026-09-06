@@ -1,4 +1,4 @@
-package ru.vorobevaqa.controller;
+package ru.vorobevaqa.controller.web;
 
 import lombok.RequiredArgsConstructor;
 import ru.vorobevaqa.entity.SkillCategory;

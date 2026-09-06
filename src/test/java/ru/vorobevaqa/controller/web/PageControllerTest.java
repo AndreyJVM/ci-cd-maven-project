@@ -1,4 +1,4 @@
-package ru.vorobevaqa.controller;
+package ru.vorobevaqa.controller.web;
 
 import ru.vorobevaqa.dto.SkillDto;
 import ru.vorobevaqa.service.GitHubService;

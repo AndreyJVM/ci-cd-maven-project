@@ -1,4 +1,4 @@
-package ru.vorobevaqa.controller;
+package ru.vorobevaqa.controller.api;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
