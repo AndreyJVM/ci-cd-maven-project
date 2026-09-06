@@ -37,6 +37,12 @@ services:
       - postgres
     networks:
       - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
 
   # ========== NGINX ==========
   nginx:
