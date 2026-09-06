@@ -141,3 +141,13 @@ footer {
     background: var(--card-bg);
     border: 2px solid var(--card-border);
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-pointer img {
+    transition: transform 0.25s ease;
+}
+.cursor-pointer:hover img {
+    transform: scale(1.03);
+}

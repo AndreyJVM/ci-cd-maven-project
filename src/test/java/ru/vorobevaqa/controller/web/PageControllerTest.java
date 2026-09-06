@@ -48,7 +48,7 @@ class PageControllerTest {
 
         mockMvc.perform(get("/about"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("about"))
+                .andExpect(view().name("pages/about"))
                 .andExpect(model().attributeExists("skills"))
                 .andExpect(model().attributeExists("categories"));
     }
@@ -58,8 +58,9 @@ class PageControllerTest {
     void shouldReturnIndexPage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"));
+                .andExpect(view().name("pages/index"));
     }
+
     @Test
     @DisplayName("GET /projects - should return projects view with repos in model")
     void shouldReturnProjectsPageWithRepos() throws Exception {
@@ -67,7 +68,7 @@ class PageControllerTest {
 
         mockMvc.perform(get("/projects"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("projects"))
+                .andExpect(view().name("pages/projects"))
                 .andExpect(model().attributeExists("repos"));
     }
 }
