@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.SkillDto;
+import org.example.service.GitHubService;
 import org.example.service.SkillService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,9 @@ class PageControllerTest {
 
     @MockBean
     private SkillService skillService;
+
+    @MockBean
+    private GitHubService gitHubService;
 
     @Test
     @DisplayName("GET /about - should return about view with skills and categories in model")
@@ -55,5 +59,15 @@ class PageControllerTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
+    }
+    @Test
+    @DisplayName("GET /projects - should return projects view with repos in model")
+    void shouldReturnProjectsPageWithRepos() throws Exception {
+        when(gitHubService.getRecentRepositories()).thenReturn(List.of());
+
+        mockMvc.perform(get("/projects"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("projects"))
+                .andExpect(model().attributeExists("repos"));
     }
 }

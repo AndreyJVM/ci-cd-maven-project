@@ -2,6 +2,7 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.entity.SkillCategory;
+import org.example.service.GitHubService;
 import org.example.service.SkillService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,22 +13,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PageController {
 
     private final SkillService skillService;
+    private final GitHubService gitHubService;
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/about")
     public String about(Model model) {
-        // Добавляем матрицу навыков и список категорий в модель шаблона
         model.addAttribute("skills", skillService.getAllSkills());
         model.addAttribute("categories", SkillCategory.values());
         return "about";
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
-
     @GetMapping("/projects")
-    public String projects() {
+    public String projects(Model model) {
+        model.addAttribute("repos", gitHubService.getRecentRepositories());
         return "projects";
     }
 
