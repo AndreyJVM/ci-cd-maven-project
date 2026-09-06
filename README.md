@@ -3,7 +3,7 @@
 Production-ready web application combining a personal portfolio and an interactive QR code generator microservice. Built with Java 17 and Spring Boot 3, containerized with Docker, and deployed via a fully automated CI/CD pipeline.
 
 - **Production URL:** [https://vorobevaqa.ru](https://vorobevaqa.ru)
-- **Docker Hub:** `andreyvorobevaqa/ci-cd-maven-project`
+- **Docker Hub:** `andreyvorobevaqa/portfolio-service`
 
 ---
 
@@ -52,7 +52,7 @@ docker run -d \
   --name my-java-app \
   -p 8080:8080 \
   -e JAVA_OPTS="-Xmx256m -xms128m" \
-  andreyvorobevaqa/ci-cd-maven-project:latest
+  andreyvorobevaqa/portfolio-service:latest
 ```
 
 ---

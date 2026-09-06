@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.vorobevaqa</groupId>
-  <artifactId>ci-cd-maven-project</artifactId>
+  <artifactId>portfolio-service</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
