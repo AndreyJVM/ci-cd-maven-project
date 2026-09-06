@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import ru.vorobevaqa.config.CacheConfig;
 import ru.vorobevaqa.dto.GitHubRepoDto;
 
 import java.time.Duration;
@@ -24,7 +25,6 @@ public class GitHubService {
     public GitHubService(@Value("${github.username:AndreyJVM}") String githubUsername) {
         this.githubUsername = githubUsername;
 
-        // Конфигурируем фабрику с таймаутами для защиты от зависаний
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(Duration.ofSeconds(2));
         requestFactory.setReadTimeout(Duration.ofSeconds(3));
@@ -37,7 +37,7 @@ public class GitHubService {
                 .build();
     }
 
-    @Cacheable(value = "githubRepos", unless = "#result.isEmpty()")
+    @Cacheable(value = CacheConfig.GITHUB_REPOS_CACHE, unless = "#result.isEmpty()")
     public List<GitHubRepoDto> getRecentRepositories() {
         try {
             log.info("Fetching recent repositories from GitHub API for user: {}", githubUsername);
@@ -50,7 +50,6 @@ public class GitHubService {
                 return Collections.emptyList();
             }
 
-            // Фильтруем форки, чтобы показывать только личные проекты
             return repos.stream()
                     .filter(repo -> !repo.isFork())
                     .limit(6)

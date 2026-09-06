@@ -133,62 +133,61 @@
             </div>
         </div>
     </div>
-</main>
-
-<!-- ========================================== -->
-<!-- СЕКЦИЯ: Активность на GitHub               -->
-<!-- ========================================== -->
-<section class="py-5 bg-light" id="github-activity" th:if="${repos != null and !repos.isEmpty()}">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
-            <div>
-                <span class="badge bg-dark px-3 py-2 rounded-pill fw-semibold mb-2">
+    <!-- ========================================== -->
+    <!-- СЕКЦИЯ: Активность на GitHub               -->
+    <!-- ========================================== -->
+    <section class="py-5 bg-body-tertiary" id="github-activity" th:if="${repos != null and !repos.isEmpty()}">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+                <div>
+                <span class="badge bg-dark-subtle text-body border px-3 py-2 rounded-pill fw-semibold mb-2">
                     <i class="fab fa-github me-1"></i>Open Source & Code
                 </span>
-                <h2 class="fw-bold mb-0">Последняя активность на GitHub</h2>
+                    <h2 class="fw-bold mb-0">Последняя активность на GitHub</h2>
+                </div>
+                <a th:href="'https://github.com/' + ${@environment.getProperty('github.username', 'AndreyJVM')}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-secondary btn-sm rounded-pill px-3 mt-3 mt-sm-0">
+                    Все репозитории <i class="fas fa-external-link-alt ms-1"></i>
+                </a>
             </div>
-            <a th:href="'https://github.com/' + ${@environment.getProperty('github.username', 'AndreyJVM')}"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-outline-dark btn-sm rounded-pill px-3 mt-3 mt-sm-0">
-                Все репозитории <i class="fas fa-external-link-alt ms-1"></i>
-            </a>
-        </div>
 
-        <div class="row g-4">
-            <div th:each="repo : ${repos}" class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-3 bg-white">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h5 class="card-title fw-bold mb-0">
-                                <a th:href="${repo.htmlUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark stretched-link">
-                                    <i class="fas fa-book-bookmark text-primary me-2"></i><span th:text="${repo.name}">Repo Name</span>
-                                </a>
-                            </h5>
-                            <span class="badge bg-light text-muted border small">
+            <div class="row g-4">
+                <div th:each="repo : ${repos}" class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm rounded-4 p-3">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title fw-bold mb-0">
+                                    <a th:href="${repo.htmlUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-reset stretched-link">
+                                        <i class="fas fa-book-bookmark text-primary me-2"></i><span th:text="${repo.name}">Repo Name</span>
+                                    </a>
+                                </h5>
+                                <span class="badge bg-body-secondary text-body-secondary border small">
                                 <i class="fas fa-star text-warning me-1"></i><span th:text="${repo.stars}">0</span>
                             </span>
-                        </div>
+                            </div>
 
-                        <p class="card-text text-muted small flex-grow-1" th:text="${repo.description != null ? repo.description : 'Нет описания'}">
-                            Краткое описание репозитория.
-                        </p>
+                            <p class="card-text text-body-secondary small flex-grow-1" th:text="${repo.description != null ? repo.description : 'Нет описания'}">
+                                Краткое описание репозитория.
+                            </p>
 
-                        <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top small text-muted">
+                            <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top small text-body-secondary">
                             <span>
                                 <i class="fas fa-circle text-primary me-1" style="font-size: 0.6rem;"></i>
                                 <span th:text="${repo.language != null ? repo.language : 'Docs / Other'}">Java</span>
                             </span>
-                            <span>
+                                <span>
                                 <i class="fas fa-code-branch me-1"></i><span th:text="${repo.forks}">0</span>
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 
