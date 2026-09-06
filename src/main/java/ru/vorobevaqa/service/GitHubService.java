@@ -1,14 +1,16 @@
 package ru.vorobevaqa.service;
 
 import lombok.extern.slf4j.Slf4j;
-import ru.vorobevaqa.dto.GitHubRepoDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import ru.vorobevaqa.dto.GitHubRepoDto;
 
+import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +23,14 @@ public class GitHubService {
 
     public GitHubService(@Value("${github.username:AndreyJVM}") String githubUsername) {
         this.githubUsername = githubUsername;
+
+        // Конфигурируем фабрику с таймаутами для защиты от зависаний
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(Duration.ofSeconds(2));
+        requestFactory.setReadTimeout(Duration.ofSeconds(3));
+
         this.restClient = RestClient.builder()
+                .requestFactory(requestFactory)
                 .baseUrl("https://api.github.com")
                 .defaultHeader(HttpHeaders.USER_AGENT, "Spring-Boot-Portfolio-App")
                 .defaultHeader(HttpHeaders.ACCEPT, "application/vnd.github.v3+json")
