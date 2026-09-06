@@ -1,10 +1,6 @@
-package ru.vorobevaqa.controller;
+package ru.vorobevaqa.controller.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.vorobevaqa.controller.api.QrRestController;
-import ru.vorobevaqa.dto.QrRequest;
-import ru.vorobevaqa.exception.GlobalExceptionHandler;
-import ru.vorobevaqa.service.QrCodeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +9,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.vorobevaqa.dto.QrRequest;
+import ru.vorobevaqa.exception.GlobalExceptionHandler;
+import ru.vorobevaqa.service.QrCodeService;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;

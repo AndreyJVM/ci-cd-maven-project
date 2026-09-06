@@ -19,7 +19,7 @@ public class GitHubService {
     private final RestClient restClient;
     private final String githubUsername;
 
-    public GitHubService(@Value("${github.username:vorobev-qa}") String githubUsername) {
+    public GitHubService(@Value("${github.username:AndreyJVM}") String githubUsername) {
         this.githubUsername = githubUsername;
         this.restClient = RestClient.builder()
                 .baseUrl("https://api.github.com")
